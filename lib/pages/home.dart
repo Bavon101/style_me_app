@@ -16,20 +16,47 @@ class Home extends StatelessWidget {
         title: const Text("Style Me"),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: ListView(
+          padding: const EdgeInsets.all(20),
           children: <Widget>[
+            const SizedBox(
+              height: 20,
+            ),
+            Text(
+              AppUtils.introWelcome,
+              style: const TextStyle(fontSize: 55, fontWeight: FontWeight.bold),
+            ),
             Text(
               AppUtils.appDescription,
-              textAlign: TextAlign.center,
+          
             ),
-             if(context.watch<ImageHandler>().image!= null)
-               ImageCard(imageUrl: context.read<ImageHandler>().image!.path),
+            const SizedBox(
+              height: 20,
+            ),
+             Align(
+              alignment: Alignment.topLeft,
+               child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    textStyle: const TextStyle(fontSize: 20)),
+                onPressed: () {},
+                child: const Text('Style Me'),
+                         ),
+             ),
+            const SizedBox(
+              height: 20,
+            ),
+            GridView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: AppUtils.homeImages.length,
+              gridDelegate:const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3) , itemBuilder: (_,i)=> ImageCard(imageUrl: AppUtils.homeImages[i]) ),
+            if (context.watch<ImageHandler>().image != null)
+              ImageCard(imageUrl: context.read<ImageHandler>().image!.path),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: ()  =>  context.read<ImageHandler>().promptImageSelection(),
+        onPressed: () => context.read<ImageHandler>().promptImageSelection(),
         tooltip: 'add image',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.

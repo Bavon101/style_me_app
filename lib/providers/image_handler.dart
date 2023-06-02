@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:style_me_app/utils/app_utils.dart';
@@ -36,6 +37,7 @@ class ImageHandler with ChangeNotifier {
         return Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
+            if(!kIsWeb)
             ListTile(
               leading: const Icon(Icons.camera_alt),
               title: const Text('Camera'),
