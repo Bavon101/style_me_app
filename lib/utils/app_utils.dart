@@ -24,4 +24,19 @@ class AppUtils {
     "https://images.unsplash.com/photo-1642929518457-d3517756353f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDF8fHN0eWxlJTIwYWZyaWNhfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
     "https://images.unsplash.com/photo-1600178890085-39bc0bffd881?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjR8fHN0eWxlJTIwYWZyaWNhfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
   ];
+
+  static List<Map<String, String>> categories = [
+    {
+      "image": "https://plus.unsplash.com/premium_photo-1664442593274-38caa77af985?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8c3R5bGV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60",
+      "name": "New arrivals",
+    },
+    {
+      "image": "https://images.unsplash.com/photo-1525299374597-911581e1bdef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8c3R5bGV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60",
+      "name": "Trending",
+    },
+    {
+      "image": "https://images.unsplash.com/photo-1521443331827-88ee11ea2706?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c3R5bGUlMjBhZnJpY2F8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60",
+      "name": "Best sellers",
+    }
+  ];
 }

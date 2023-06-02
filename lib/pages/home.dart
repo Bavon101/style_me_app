@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:style_me_app/utils/app_utils.dart';
+import 'package:style_me_app/widgets/categories_card.dart';
 import 'package:style_me_app/widgets/image_card.dart';
 
 import '../providers/image_handler.dart';
@@ -38,7 +39,13 @@ class Home extends StatelessWidget {
                child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     textStyle: const TextStyle(fontSize: 20)),
-                onPressed: () {},
+                onPressed: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Style Me'),
+                    ),
+                  );
+                },
                 child: const Text('Style Me'),
                          ),
              ),
@@ -50,6 +57,7 @@ class Home extends StatelessWidget {
               physics: const NeverScrollableScrollPhysics(),
               itemCount: AppUtils.homeImages.length,
               gridDelegate:const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3) , itemBuilder: (_,i)=> ImageCard(imageUrl: AppUtils.homeImages[i]) ),
+              const CategoriesCard(),
             if (context.watch<ImageHandler>().image != null)
               ImageCard(imageUrl: context.read<ImageHandler>().image!.path),
           ],
@@ -58,8 +66,14 @@ class Home extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () => context.read<ImageHandler>().promptImageSelection(),
         tooltip: 'add image',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+        child: context.watch<ImageHandler>().loading ? Center(
+          child: CircularProgressIndicator(
+            valueColor: AlwaysStoppedAnimation<Color>(
+              Theme.of(context).colorScheme.inversePrimary,
+            ),
+          )
+        )  :const Icon(Icons.add),
+      ), 
     );
   }
 }
